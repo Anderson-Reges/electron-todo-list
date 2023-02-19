@@ -9,8 +9,6 @@ export default function Context({children}) {
   })
   const [allTasks, setAllTasks] = useState()
 
-  console.log(task)
-
   const setTaskState = (task) => {
     setTask((prevState) => ({
       ...prevState, ...task
