@@ -27,7 +27,7 @@ const createNewTask = async (req, res) => {
   return res.status(201).json(payload);
 };
 
-const deleteTaskControl = async (req, res) => {
+const deleteTask = async (req, res) => {
   const { id } = req.params
 
   await deleteTask(id);
