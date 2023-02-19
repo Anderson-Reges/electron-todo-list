@@ -1,13 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
   const task = sequelize.define('Task', {
     id: { type: DataTypes.INTEGER, primaryKey: true },
-    taskName: DataTypes.STRING,
-    shortDescription: DataTypes.STRING,
+    task_name: DataTypes.STRING,
+    short_description: DataTypes.STRING,
   },
     {
       timestamps: false,
       tableName: 'tasks',
-      underscored: true,
     }
   );
 
