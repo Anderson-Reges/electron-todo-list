@@ -1,29 +1,19 @@
-require('dotenv').config()
+import axios from 'axios';
 
-const port = process.env.API_PORT;
+const HOST = process.env.API_PORT || 3008;
 
-export const getAllTask = async () => {
-  const response = await fetch(`http://localhost:${port}/tasks`)
-  const res = await response.json();
-  return res
-};
+const fetch = axios.create({
+  baseURL: `http://localhost:${HOST}`,
+  timeout: 10000,
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  },
+})
 
-export const createTask = async (newTask) => {
-  const response = await fetch(`http://localhost:${port}/task`, {
-    method: 'POST',
-    body: JSON.stringify({
-      task_name: newTask.taskName,
-      shor_description: newTask.shorDescription,
-    })
-  })
-  const res = await response.json();
-  return res
-}
+const taskApi = async (method, endpoint, body) => fetch
+  .request({ method, url: endpoint, data: body })
+    .then(({ status, data }) => ({ status, data }));
 
-export const deleteTask = async (id) => {
-  const response = await fetch(`http://localhost:${port}/tasks/${id}`, {
-    method: 'DELETE'
-  })
-  const res = await response.json();
-  return res
-}
+export default taskApi

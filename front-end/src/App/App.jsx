@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AppContext from '../context/AppContext';
 import styles from './style.module.scss';
 
 function App() {
-  const { setTask } = useContext(AppContext);
+  const { setTask, task, allTasks, getTasks, addTask, rmTask } = useContext(AppContext);
 
-  const handleClick = () => {
-    
+  const handleClickAdd = async () => addTask()
+  const handleClickRm = async ({ target }) => {
+    console.log(target)
   }
   
   const getValue = ({ target }) => {
@@ -16,6 +17,10 @@ function App() {
     })
   }
 
+  useEffect(()=>{
+    getTasks();
+  }, [getTasks]);
+
   return (
     <div className={styles.App}>
       <div className={styles.AppInputs}>
@@ -23,7 +28,28 @@ function App() {
         <div id={styles.divInputs}>
           <input type="text" name="taskName" id="inputText" onChange={ getValue } />
           <input type="text" name="shorDescription" id="inputText" onChange={ getValue } />
-          <input type="button" value="SaveTodo" onClick={ handleClick }/>
+          <input type="button" value="SaveTodo" onClick={ handleClickAdd }/>
+        </div>
+        <div className="tasks">
+          <table>
+            <div className="containerTask">
+            <tr>
+              <th>id</th>
+              <th>name</th>
+              <th>description</th>
+            </tr>
+            {allTasks && allTasks.map((task) => (
+                <div className="taskLine">
+                  <tr>
+                    <td>{task.id}</td>
+                    <td>{task.task_name}</td>
+                    <td>{task.short_description}</td>
+                  </tr>
+                  <input type="button" value="Remover Tarefa" onClick={ handleClickRm }/>
+                </div>
+                ))}
+            </div>
+          </table>
         </div>
       </div>
     </div>
