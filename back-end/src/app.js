@@ -8,6 +8,6 @@ app.use(express.json());
 app
   .get('/tasks', getAllTasksCont)
   .post('/task', createNewTask)
-  .delete('/tasks', deleteOneTask);
+  .delete('/tasks/:id', deleteOneTask);
 
 module.exports = app;
