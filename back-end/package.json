@@ -2,9 +2,11 @@
   "name": "back-end",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "dev": ""
+    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "drop": "npx sequelize-cli db:drop",
+    "dev": "nodemon src/server.js"
   },
   "keywords": [],
   "author": "Anderson-Reges",
