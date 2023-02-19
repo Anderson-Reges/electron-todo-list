@@ -4,12 +4,12 @@ import taskApi from '../utils/fetch';
 
 export default function Context({children}) {
   const [task, setTask] = useState({
-    taskName: '',
-    shorDescription: ''
+    task_name: '',
+    short_description: ''
   })
   const [allTasks, setAllTasks] = useState()
 
-  console.log(allTasks)
+  console.log(task)
 
   const setTaskState = (task) => {
     setTask((prevState) => ({
@@ -21,9 +21,9 @@ export default function Context({children}) {
     .then(({ data: tasks }) => setAllTasks(tasks)), []);
 
   const addTask = async () => taskApi('POST', 'task', task)
-    .then(({ status }) => console.log(status));
+    .then(getTasks);
 
-  const rmTask = async (id) => taskApi('DELETE', `task/${id}`)
+  const rmTask = async (id) => taskApi('DELETE', `tasks/${id}`)
     .then(getTasks);
 
   const obj = {

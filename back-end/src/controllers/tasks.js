@@ -9,9 +9,9 @@ const getAllTasksCont = async (_req, res) => {
 };
 
 const createNewTask = async (req, res) => {
-  const { taskName, shorDescription } = req.body;
+  const { task_name, short_description } = req.body;
 
-  const ifExistTask = await getTaskWithYourProperties(taskName, shorDescription);
+  const ifExistTask = await getTaskWithYourProperties(task_name, short_description);
 
   if (ifExistTask.length !== 0) {
     return res.status(409).json({ message: 'Existe uma tarefa com esse nome ou com essa descrição' });
@@ -20,8 +20,8 @@ const createNewTask = async (req, res) => {
   await createTask(req.body);
 
   const payload = {
-    taskName,
-    shorDescription,
+    task_name,
+    short_description,
   };
 
   return res.status(201).json(payload);
