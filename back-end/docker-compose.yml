@@ -14,7 +14,7 @@ services:
     depends_on:
       - db
     ports:
-      - 3000:3000
+      - 3008:3008
     environment:
       MYSQL_USER: root
       MYSQL_PASSWORD: password

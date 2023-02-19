@@ -27,7 +27,7 @@ const createNewTask = async (req, res) => {
   return res.status(201).json(payload);
 };
 
-const deleteTask = async (req, res) => {
+const deleteOneTask = async (req, res) => {
   const { id } = req.params
 
   await deleteTask(id);
@@ -37,5 +37,5 @@ const deleteTask = async (req, res) => {
 module.exports = {
   getAllTasksCont,
   createNewTask,
-  deleteTask,
+  deleteOneTask,
 }
