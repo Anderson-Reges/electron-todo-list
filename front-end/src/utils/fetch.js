@@ -1,7 +1,6 @@
 import axios from 'axios';
-require('dotenv').config()
 
-const PORT = process.env.API_PORT;
+const PORT = process.env.REACT_APP_API_PORT;
 
 const fetch = axios.create({
   baseURL: `http://localhost:${PORT}`,
