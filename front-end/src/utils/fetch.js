@@ -1,5 +1,4 @@
 import axios from 'axios';
-require('dotenv').config()
 
 const PORT = process.env.API_PORT;
 
