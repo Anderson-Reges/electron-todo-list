@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "drop": "npx sequelize-cli db:drop",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon -L --watch ."
   },
   "keywords": [],
   "author": "Anderson-Reges",

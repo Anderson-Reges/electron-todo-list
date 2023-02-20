@@ -17,7 +17,11 @@ const createNewTask = async (req, res) => {
     return res.status(409).json({ message: 'Existe uma tarefa com esse nome' });
   }
 
-    await createTask(req.body);
+  const newTask = {
+    task_name,
+  }
+
+  short_description === '' ? await createTask(newTask) : await createTask(req.body)
 
   return res.status(201).json(req.body);
 };

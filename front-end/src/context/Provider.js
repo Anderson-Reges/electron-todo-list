@@ -3,14 +3,13 @@ import React, { useState, useCallback } from 'react'
 import taskApi from '../utils/fetch';
 
 export default function Context({children}) {
-  const [task, setTask] = useState({
+  const [newtask, setNewTask] = useState({
     task_name: '',
-    short_description: ''
   })
   const [allTasks, setAllTasks] = useState()
-
+  
   const setTaskState = (task) => {
-    setTask((prevState) => ({
+    setNewTask((prevState) => ({
       ...prevState, ...task
     }))
   };
@@ -18,7 +17,7 @@ export default function Context({children}) {
   const getTasks = useCallback(async () => taskApi('GET', 'tasks')
     .then(({ data: tasks }) => setAllTasks(tasks)), []);
 
-  const addTask = async () => taskApi('POST', 'task', task)
+  const addTask = async () => taskApi('POST', 'task', newtask)
     .then(getTasks);
 
   const rmTask = async (id) => taskApi('DELETE', `tasks/${id}`)
@@ -26,7 +25,7 @@ export default function Context({children}) {
 
   const obj = {
     setTaskState,
-    task,
+    newtask,
     allTasks,
     getTasks,
     addTask,
