@@ -1,6 +1,5 @@
 require('dotenv').config()
 const { BrowserWindow, app } = require('electron');
-console.log(process.env)
 
 const PORT = process.env.REACT_PORT;
 
