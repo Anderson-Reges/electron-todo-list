@@ -1,6 +1,8 @@
+require('dotenv').config()
 const { BrowserWindow, app } = require('electron');
+console.log(process.env)
 
-const PORT = process.env.API_PORT || 3008;
+const PORT = process.env.REACT_PORT;
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -13,4 +15,12 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   createWindow();
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
 });
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit()
+})
