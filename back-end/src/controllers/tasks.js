@@ -11,20 +11,19 @@ const getAllTasksCont = async (_req, res) => {
 const createNewTask = async (req, res) => {
   const { task_name, short_description } = req.body;
 
-  const ifExistTask = await getTaskWithYourProperties(task_name, short_description);
+  const ifExistTask = await getTaskWithYourProperties(task_name);
 
   if (ifExistTask.length !== 0) {
-    return res.status(409).json({ message: 'Existe uma tarefa com esse nome ou com essa descrição' });
+    return res.status(409).json({ message: 'Existe uma tarefa com esse nome' });
   }
 
-  await createTask(req.body);
-
-  const payload = {
+  const newTask = {
     task_name,
-    short_description,
-  };
+  }
 
-  return res.status(201).json(payload);
+  short_description === '' ? await createTask(newTask) : await createTask(req.body)
+
+  return res.status(201).json(req.body);
 };
 
 const deleteOneTask = async (req, res) => {

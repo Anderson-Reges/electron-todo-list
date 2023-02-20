@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "electronDev": "electron .",
+    "electronDev": "electron src/main.jsx",
     "electronStart": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"

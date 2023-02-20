@@ -6,9 +6,9 @@ const getAllTasks = async () => {
   return result;
 };
 
-const getTaskWithYourProperties = async (taskName, description) => {
+const getTaskWithYourProperties = async (taskName) => {
   const result = await Task.findAll({
-    where: { task_name: taskName, short_description: description},
+    where: { task_name: taskName},
   });
 
   return result;
