@@ -8,7 +8,6 @@ function App() {
     task_name: '',
     short_description: '',
   })
-  console.log(newTask)
 
   const handleClickAdd = async () => {
     addTask(newTask)
