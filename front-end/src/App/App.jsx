@@ -9,14 +9,20 @@ function App() {
     short_description: '',
   })
 
-  const handleClickAdd = async () => addTask(newTask)
+  const handleClickAdd = async () => {
+    addTask(newTask)
+    setNewTask({
+      task_name: '',
+      short_description: '',
+    })
+  }
   const handleClickRm = async ({ target }) => rmTask(target.id)
   
   const getValue = ({ target }) => {
     const { name } = target
-    setNewTask({
-      [name]: target.value
-    })
+    setNewTask((prevState) => ({
+      ...prevState, [name]: target.value
+    }))
   }
 
   useEffect(()=>{
@@ -31,16 +37,16 @@ function App() {
           <input
             type="text"
             name="task_name"
-            value={newTask.task_name}
             id="inputText"
+            value={newTask.task_name}
             placeholder='Nome da Tarefa'
             onChange={ getValue }
           />
           <input
             type="text"
             name="short_description"
-            value={newTask.short_description}
             id="inputText"
+            value={newTask.short_description}
             placeholder='Descrição da Tarefa'
             onChange={ getValue }
           />
