@@ -4,7 +4,8 @@
   "private": true,
   "main": "src/electron/main.js",
   "author": "Anderson-Reges",
-  "description": "",
+  "description": "This Project is for learning electron with react and back-end",
+  "license": "ISC",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

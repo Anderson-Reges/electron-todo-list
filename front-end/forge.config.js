@@ -1,5 +1,7 @@
 module.exports = {
-  packagerConfig: {},
+  packagerConfig: {
+    icon: './images/todoIconWin' // no file extension required
+  },
   rebuildConfig: {},
   makers: [
     {
@@ -12,7 +14,11 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        options: {
+          icon: './images/todoIcon.png'
+        }
+      },
     },
     {
       name: '@electron-forge/maker-rpm',
