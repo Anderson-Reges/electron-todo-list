@@ -10,9 +10,24 @@
   align-items: center;
   justify-content: center;
   color: white;
+  gap: 10px;
+  
+  input {
+    cursor: pointer;
+  }
 
   #divInputs {
     display: flex;
     gap: 10px;
   }
 };
+
+.tasks {
+  table, th, td {
+    border: white solid 2px;
+    input {
+      cursor: pointer;
+    }
+  }
+  
+}
