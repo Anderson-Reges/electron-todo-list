@@ -32,7 +32,7 @@ function App() {
   return (
     <div className={styles.App}>
       <div className={styles.AppInputs}>
-        <h3>Digite sua Tarefa e salve-a:</h3>
+        <h3>Digite sua Tarefa:</h3>
         <div id={styles.divInputs}>
           <input
             type="text"
@@ -50,27 +50,29 @@ function App() {
             placeholder='Descrição da Tarefa'
             onChange={ getValue }
           />
-          <input type="button" value="SaveTodo" onClick={ handleClickAdd }/>
+          <input type="button" value="Salve a Tarefa" onClick={ handleClickAdd }/>
         </div>
-        <div className="tasks">
+        <div className={styles.tasks}>
           <table>
-            <tbody className="containerTask">
+            <thead>
               <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>description</th>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Descrição</th>
               </tr>
+            </thead>
               {allTasks && allTasks.map((task, index) => (
-                    <tr key={index}>
+                  <tbody key={index}>
+                    <tr>
                       <td>{index + 1}</td>
                       <td>{task.task_name}</td>
                       <td>{task.short_description}</td>
                       <td>
-                        <input type="button" id={task.id} value="Remover Tarefa" onClick={ handleClickRm }/>
+                        <input type="button" id={task.id} value="X" onClick={ handleClickRm }/>
                       </td>
                     </tr>
+                  </tbody>
                   ))}
-            </tbody>
           </table>
         </div>
       </div>
