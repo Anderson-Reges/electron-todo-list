@@ -62,4 +62,4 @@ Back-end:
  * Para rodar o Electron:
  
   > utilize o comando `cd front-end` e então use o comando `npm run electronStart` para rodar o app com Electron
-   - para criar uma build do app para desktop utilize o comando `npm run make`. (testado no windows e no Linux).
+   - para criar uma build do app para desktop utilize o comando `npm run make` dentro da pasta `front-end`. (testado no windows e no Linux).
